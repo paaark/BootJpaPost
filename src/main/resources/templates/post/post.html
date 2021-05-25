@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/post}" method="post">
+        <input type="text" name="title" id="title" placeholder="제목">
+        <textarea name="content" id="content" placeholder="내용"></textarea>
+        <a href="javascript:void(0);" onclick="post();">등록</a>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        const post = function (){
+            validationTitle();
+            validationContent();
+
+            fetch('/post',{
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'title': title.value,
+                    'content': content.value
+                })
+            }).then(response => {
+                if (true == response.ok)
+                    this.Location = res.headers.get('Location');
+                return res.json();
+            }).then (data=>{
+                if(200 == data.status ){ //성공 (Location)
+                    alert(data.message);
+                    location.href= this.Location;
+                }
+                if(200 != data.status ) //실패
+                    alert(data.message);
+            }).catch( error =>{
+                console.log(error);
+            })
+        }
+
+        const validationTitle() = function() {
+            if(title.value == null){
+                alert("제목을 입력해주세요.");
+                return false;
+            }
+        }
+
+
+        const validationContent() = function() {
+            if(content.value == null){
+                alert("내용을 입력해주세요.");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
