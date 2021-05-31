@@ -14,14 +14,14 @@ public class PostForm {
         @Getter
         @Setter
         @NoArgsConstructor
-        public static class AddPost{
+        public static class add{
             @NotBlank(message = "제목을 입력해주세요.")
             private String title;
 
             @NotBlank(message = "내용을 입력해주세요.")
             private String content;
 
-            public Post AddPost(){
+            public Post toEntity(){
                 return Post.builder()
                         .title(title)
                         .content(content)
@@ -33,14 +33,14 @@ public class PostForm {
         @Getter
         @Setter
         @NoArgsConstructor
-        public static class Modify{
+        public static class modify{
             @NotBlank(message = "제목을 입력해주세요.")
             private String title;
 
             @NotBlank(message = "내용을 입력해주세요.")
             private String content;
 
-            public Post Modify(){
+            public Post toEntity(){
                 return Post.builder()
                         .title(title)
                         .content(content)
@@ -55,11 +55,11 @@ public class PostForm {
 
         @Getter
         @Setter
-        public static class FindAll {
+        public static class findAll {
             private String title;
             private String content;
 
-            private FindAll(String title, String content){
+            private findAll(String title, String content){
                 this.title = title;
                 this.content = content;
             }
@@ -68,12 +68,12 @@ public class PostForm {
 
         @Getter
         @Setter
-        public static class FindById {
+        public static class findById {
             private Long id;
             private String title;
             private String content;
 
-            private FindById(Long id,String title, String content){
+            private findById(Long id,String title, String content){
                 this.id = id;
                 this.title = title;
                 this.content = content;

@@ -14,14 +14,14 @@ public class MemberForm {
         @Getter
         @Setter
         @NoArgsConstructor
-        public static class SignUp{
+        public static class add{
             @NotBlank(message = "이메일을 입력해주세요.")
             private String email;
 
             @NotBlank(message = "비밀번호를 입력해주세요.")
             private String password;
 
-            public Member SignUp(){
+            public Member toEntity(){
                 return Member.builder()
                         .email(email)
                         .password(password)

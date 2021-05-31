@@ -21,10 +21,10 @@ public class MemberController {
     private static final int INVALID_EMAIL = 1;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signup(@Valid @RequestBody MemberForm.Request.SignUp signUp){
+    public ResponseEntity<?> signup(@Valid @RequestBody MemberForm.Request.add signUp){
         int chkEmail = memberService.findEmail(signUp.getEmail());
 
-        Member member = memberService.SignUp(signUp.SignUp());
+        Member member = memberService.SignUp(signUp.toEntity());
 
         HttpHeaders headers = new HttpHeaders();
 

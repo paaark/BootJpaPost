@@ -23,14 +23,14 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<?> AddPost(@Valid @RequestBody PostForm.Request.AddPost addPost){
-        Post Add = postService.AddPost(addPost.AddPost());
+    public ResponseEntity<?> AddPost(@Valid @RequestBody PostForm.Request.add addPost){
+        Post Add = postService.AddPost(addPost.add());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(Add);
+        return ResponseEntity.status(HttpStatus.CREATED).body(addPost);
     }
 
     @PatchMapping("/post/{id}")
-    public ResponseEntity<?> Modify(@PathVariable Long id, @RequestBody PostForm.Request.Modify modify){
+    public ResponseEntity<?> Modify(@PathVariable Long id, @RequestBody PostForm.Request.modify modify){
         return ResponseEntity.status(HttpStatus.OK).body(Modify(id, modify));
     }
 
