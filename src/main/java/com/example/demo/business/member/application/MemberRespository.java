@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface MemberRespository extends JpaRepository<Member, Long> {
 
     @Query("select cound(*) from member where email = :email")
-    int findEmail(String email);
+    int findByEmail(String email);
 
 }

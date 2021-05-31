@@ -22,7 +22,7 @@ public class MemberController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@Valid @RequestBody MemberForm.Request.add signUp){
-        int chkEmail = memberService.findEmail(signUp.getEmail());
+        int chkEmail = memberService.findByEmail(signUp.getEmail());
 
         Member member = memberService.SignUp(signUp.toEntity());
 

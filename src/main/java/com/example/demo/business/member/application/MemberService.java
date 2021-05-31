@@ -21,7 +21,7 @@ public class MemberService {
     }
 
     public int findByEmail(String email){
-        return memberRespository.findEmail(email);
+        return memberRespository.findByEmail(email);
     }
 
 }
