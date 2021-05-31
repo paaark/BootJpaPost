@@ -20,7 +20,7 @@ public class MemberService {
         return memberRespository.save(member);
     }
 
-    public int findEmail(String email){
+    public int findByEmail(String email){
         return memberRespository.findEmail(email);
     }
 

@@ -16,22 +16,22 @@ public class PostService {
     private final PostRespository postRespository;
 
     @Transactional
-    public List<Post> FindAll(){
+    public List<Post> findAll(){
         return postRespository.findAll();
     }
 
     @Transactional
-    public Post FindById(Long id){
-        return postRespository.findById(id).orElseThrow(() -> new BusinessException(ErrorCode.POST_NOT_FOUND));
+    public Post findById(Long id){
+        return postRespository.findById(id).orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_POST));
     }
 
     @Transactional
-    public Post AddPost(Post post){
+    public Post add(Post post){
         return postRespository.save(post);
     }
 
     @Transactional
-    public void Modify(Long id, Post post){
+    public void modify(Long id, Post post){
         postRespository.modify(id, post);
     }
 
